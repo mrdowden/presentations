@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Sample Presentation using reveal.js</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../extern/reveal.js/css/reveal.min.css">
+	<link rel="stylesheet" href="../extern/reveal.js/css/theme/default.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="../extern/reveal.js/lib/css/zenburn.css">
+	
+	<style>
+		.slides h2 .avatar { height: 80px; vertical-align: middle; }
+	</style>
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	document.write( '<link rel="stylesheet" href="../extern/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="../extern/reveal.js/lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Death of the Download</h1>
+				<br><br>
+				<h2><img class="avatar" src="mdowden.png" alt="Michael Dowden"> Michael Dowden</h2>
+				<p>
+					<a href="">@mrdowden</a><br>
+					<a href="https://twitter.com/mrdowden">linkedin.com/in/mdowden</a>
+				</p>
+			</section>
+			
+			<section>
+				<section>
+					<h2>Office Productivity</h2>
+					<a href="https://drive.google.com">drive.google.com</a>
+					<img src="google-drive-1.png" alt="Google Docs">
+				</section>
+				<section>
+					<h2>Office Productivity</h2>
+					<a href="https://drive.google.com">drive.google.com</a>
+					<img src="google-drive-2.png" alt="Google Docs">
+				</section>
+				<section>
+					<h2>Office Productivity</h2>
+					<a href="https://drive.google.com">drive.google.com</a>
+					<img src="google-drive-3.png" alt="Google Docs">
+				</section>
+				<section>
+					<h2>Office Productivity</h2>
+					<a href="https://drive.google.com">drive.google.com</a>
+					<img src="google-drive-4.png" alt="Google Docs">
+				</section>
+			</section>
+			
+			<section>
+				<section>
+					<h2>Accounting</h2>
+					<a href="https://www.mint.com/">mint.com</a>
+					<img src="mint.png" alt="Mint.com">
+				</section>
+				<section>
+					<h2>Accounting</h2>
+					<a href="http://quickbooks.intuit.com/">quickbooks.intuit.com</a>
+					<img src="quickbooks.png" alt="QuickBooks Online">
+				</section>
+			</section>
+			
+			<section>
+				<h2>Business Apps</h2>
+				<a href="http://www.zoho.com/business-apps.html">zoho.com</a>
+				<img src="zoho.png" alt="Zoho">
+			</section>
+			
+			<section>
+				<h2>Collaboration</h2>
+				<a href="http://www.smartsheet.com/">smartsheet.com</a>
+				<img src="smartsheet.png" alt="Smartsheet">
+			</section>
+			
+			<section>
+				<h2>Project Management</h2>
+				<a href="https://www.atlassian.com/software/jira">atlassian.com</a>
+				<img src="jira.png" alt="Atlassian Jira">
+			</section>
+			
+			<section>
+				<h2>Image Processing</h2>
+				<a href="http://pixlr.com/editor/">pixlr.com</a>
+				<img src="pixlr.png" alt="Pixlr">
+			</section>
+			
+			<section>
+				<section>
+					<h2>Wireframes</h2>
+					<a href="https://wireframe.cc">https://wireframe.cc</a>
+					<img src="wireframe.png" alt="wireframe|cc">
+				</section>
+				<section>
+					<h2>Wireframes</h2>
+					<a href="https://moqups.com">https://moqups.com</a>
+					<img src="moqups.png" alt="moqups">
+				</section>
+			</section>
+			
+			<section>
+				<section>
+					<h2>Development</h2>
+					<a href="https://c9.io/">https://c9.io/</a>
+					<img src="c9-1.png" alt="Cloud9 IDE">
+				</section>
+				<section>
+					<h2>Development</h2>
+					<a href="https://c9.io/">https://c9.io/</a>
+					<img src="c9-2.png" alt="Cloud9 IDE">
+				</section>
+				<section>
+					<h2>Development</h2>
+					<a href="https://c9.io/">https://c9.io/</a>
+					<img src="c9-3.png" alt="Cloud9 IDE">
+				</section>
+				<section>
+					<h2>Development</h2>
+					<a href="https://c9.io/">https://c9.io/</a>
+					<img src="c9-4.png" alt="Cloud9 IDE">
+				</section>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="../extern/reveal.js/lib/js/head.min.js"></script>
+	<script src="../extern/reveal.js/js/reveal.min.js"></script>
+
+	<script>
+	// Full list of configuration options available here:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+
+		theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+		transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+		// Parallax scrolling
+		// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+		// parallaxBackgroundSize: '2100px 900px',
+
+		// Optional libraries used to extend on reveal.js
+		dependencies: [
+			{ src: '../extern/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: '../extern/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: '../extern/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: '../extern/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: '../extern/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+			{ src: '../extern/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+		]
+	});
+	</script>
+</body>
+</html>
+
