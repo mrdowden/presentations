@@ -1,0 +1,100 @@
+Title
+
+Topic
+
+Outline
+
+Bio
+
+Content
+  Testing
+  Performance/Load/Stress Testing
+  What is JMeter
+  Getting Started
+    Download & Install
+    Minimum Viable Test
+    HTTP Testing
+    JDBC Testing
+    Results
+  Advanced
+    Configure timing
+    Combining tests
+    Components / Functions
+    Edit test plan XML
+    Run tests from command line
+    Configure multiple nodes
+  Answer Questions
+    Performance
+    Simulate Load
+    Stress Test
+    Capacity
+    Bottlenecks
+    Profiling (Zabbix, JMX, etc)
+  Extend
+    Add-ons
+    Customization
+  Other Uses
+    Integration
+    Perf Mon
+  Learn More
+
+Conclusion
+
+References
+
+Contact
+
+
+
+ETHOS + PATHOS + LOGOS
+
+
+//TITLE SLIDE
+# Load Testing with Apache JMeter
+
+
+## How well do you know your software?
+
+1. How many concurrent users can it support?
+2. How does your application scale with users, data, or hits?
+3. What performance bottlenecks exist?
+4. 
+
+//LOL Stress
+http://geekandpoke.typepad.com/geekandpoke/2009/03/stress-test.html#
+http://geekandpoke.typepad.com/.a/6a00d8341d3df553ef01116901f637970c-800wi
+
+//Dilbert Stress Test
+<a href="http://dilbert.comhttp://dilbert.com/strips/comic/2009-12-29/" title="Dilbert.com"><img src="http://dilbert.com" border="0" alt="Dilbert.com" /></a>
+
+//Dilbert Performance Test
+<a href="http://dilbert.comhttp://dilbert.com/strips/comic/2010-08-11/" title="Dilbert.com"><img src="http://dilbert.com" border="0" alt="Dilbert.com" /></a>
+
+
+What is it for : performance, load, stress testing
+Alternate uses : regression testing, monitoring
+Other load testing products : LoadUI
+Other testing products : JUnit, TestNG, Selenium, SoapUI
+
+...GETTING STARTED
+Downloading & Installing
+Basics : Key components / MVT (minimum viable test)
+
+...ADVANCED USE
+edit test plan XML
+run tests from the command line
+configure multiple nodes
+
+...DO MORE:
+add-ons
+customization
+
+...LEARN MORE:
+manual
+best practices
+component/function references
+api javadocs
+
+http://resources.infosecinstitute.com/apache-jmeter-part-3/
+http://www.tutorialspoint.com/jmeter/jmeter_interview_questions.htm
+http://java-success.blogspot.com/2011/10/jmeter-interview-questions-and-answers.html

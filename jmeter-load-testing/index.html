@@ -1,11 +1,11 @@
-<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 
-	<title>Death of the Download</title>
+	<title>Web &amp; Database Load Testing with JMeter</title>
 
-	<meta name="description" content="Downloadable software is a thing of the past. HTML5, cloud computing, and SaaS are leading browser-based software to take dominance.">
+	<meta name="description" content="Do you know how many concurrent users your web application can support? Do you know where your bottlenecks are? Do you know how your application scales with an increase in users, data, hits, or other factors? Using JMeter you can develop a data-driven methodology to answer these question and more. JMeter can not only perform load testing, but can be used for integration and functional testing as well as monitoring.">
 	<meta name="author" content="Michael Dowden">
 
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -37,136 +37,128 @@
 	<div class="reveal">
 		<div class="slides">
 			<section>
-				<h1>Death of the Download</h1>
+				<h1>Load Testing with Apache JMeter</h1>
 				<br><br>
 				<h2><img class="avatar" src="http://www.gravatar.com/avatar/9e27dd592a137dc35412154ac8bef381" alt="Michael Dowden"> Michael Dowden</h2>
 				<p>
 					<a href="https://twitter.com/mrdowden">@mrdowden</a><br>
+					<a href="https://plus.google.com/+MichaelDowden/posts">+MichaelDowden</a><br>
 					<a href="https://linkedin.com/in/mdowden">linkedin.com/in/mdowden</a>
 				</p>
 			</section>
 			
 			<section>
-				<section>
-					<h2>Office Productivity</h2>
-					<a href="https://drive.google.com">drive.google.com</a>
-					<img src="google-drive-1.png" alt="Google Docs">
-				</section>
-				<section>
-					<h2>Office Productivity</h2>
-					<a href="https://drive.google.com">drive.google.com</a>
-					<img src="google-drive-2.png" alt="Google Docs">
-				</section>
-				<section>
-					<h2>Office Productivity</h2>
-					<a href="https://drive.google.com">drive.google.com</a>
-					<img src="google-drive-3.png" alt="Google Docs">
-				</section>
-				<section>
-					<h2>Office Productivity</h2>
-					<a href="https://drive.google.com">drive.google.com</a>
-					<img src="google-drive-4.png" alt="Google Docs">
-				</section>
+				<h2>Understand your Software</h2>
+				<ul>
+					<li class="fragment">How many concurrent users can it support?</li>
+					<li class="fragment">What is the response time for each page/service?</li>
+					<li class="fragment">Does response time fluctuate throughout the day?</li>
+					<li class="fragment">How does your application scale with users, data, or hits?</li>
+					<li class="fragment">What performance bottlenecks exist?</li>
+				</ul>
+				
+				<aside class="notes">
+				How well do you REALLY know your software?  /ENGAGE AUDIENCE/ What other questions do you have about software you are currently working with?
+				</aside>
 			</section>
 			
 			<section>
-				<section>
-					<h2>Accounting</h2>
-					<a href="https://www.mint.com/">mint.com</a>
-					<img src="mint.png" alt="Mint.com">
-				</section>
-				<section>
-					<h2>Accounting</h2>
-					<a href="http://quickbooks.intuit.com/">quickbooks.intuit.com</a>
-					<img src="quickbooks.png" alt="QuickBooks Online">
-				</section>
+				<h2>Outline</h2>
+				<ol>
+					<li>Testing</li>
+					<li>What is JMeter</li>
+					<li>Getting Started</li>
+					<li>Basic Test</li>
+					<li>Advanced Options</li>
+					<li>Application: Answering software questions</li>
+					<li>Extend JMeter</li>
+					<li>Further Reading</li>
+				</ol>
 			</section>
 			
 			<section>
-				<section>
-					<h2>Business Apps</h2>
-					<a href="http://www.zoho.com/business-apps.html">zoho.com</a>
-					<img src="zoho.png" alt="Zoho">
-				</section>
-				<section>
-					<h2>Business Apps</h2>
-					<a href="https://www.salesforce.com/">salesforce.com</a>
-					<img src="salesforce.png" alt="Salesforce">
-				</section>
+				<h2>About Me</h2>
+				<ul>
+					<li>Learned JMeter consulting for Eli Lilly</li>
+					<li>Full stack, full-lifecycle development since 2000</li>
+					<li>Founded Mobilify Technology, public health startup, 2013</li>
+					<li>Manager, Indianapolis Java User Group, Feb 2012</li>
+					<li>MBA Entrepreneurship, Ball State University, 2011</li>
+					<li>Founded Tekyn, software consulting, Feb 2006</li>
+					<li>BS Computer Science, Taylor University, 2000</li>
+				</ul>
+				
+				<aside class="notes">
+				</aside>
+			</section>
+
+			<section>
+				<h2></h2>
+				
+				<aside class="notes">
+				</aside>
 			</section>
 			
 			<section>
-				<h2>Collaboration</h2>
-				<a href="http://www.smartsheet.com/">smartsheet.com</a>
-				<img src="smartsheet.png" alt="Smartsheet">
+				<h2></h2>
+				
+				<aside class="notes">
+				</aside>
 			</section>
 			
 			<section>
-				<h2>Project Management</h2>
-				<a href="https://www.atlassian.com/software/jira">atlassian.com</a>
-				<img src="jira.png" alt="Atlassian Jira">
+				<h2></h2>
+				
+				<aside class="notes">
+				</aside>
 			</section>
 			
 			<section>
-				<h2>Image Processing</h2>
-				<a href="http://pixlr.com/editor/">pixlr.com</a>
-				<img src="pixlr.png" alt="Pixlr">
+				<h2></h2>
+				
+				<aside class="notes">
+				</aside>
 			</section>
 			
 			<section>
-				<h2>Diagrams</h2>
-				<a href="https://www.draw.io/">draw.io</a>
-				<img src="draw.png" alt="Draw">
+				<h2></h2>
+				
+				<aside class="notes">
+				</aside>
 			</section>
 			
 			<section>
-				<section>
-					<h2>Wireframes</h2>
-					<a href="https://wireframe.cc">wireframe.cc</a>
-					<img src="wireframe.png" alt="wireframe|cc">
-				</section>
-				<section>
-					<h2>Wireframes</h2>
-					<a href="https://moqups.com">moqups.com</a>
-					<img src="moqups.png" alt="moqups">
-				</section>
+				<h2>Apache JMeter</h2>
+				<p>Test performance and simulate load over various protocols:</p>
+				<ul>
+					<li>HTTP, HTTPS, SOAP (Web)</li>
+					<li>FTP</li>
+					<li>JDBC (Database)</li>
+					<li>LDAP</li>
+					<li>JMS (Middleware)</li>
+					<li>SMTP, POP, IMAP (Email)</li>
+					<li>MongoDB</li>
+					<li>TCP</li>
+					<li>Shell Scripts</li>
+				</ul>
+				
+				<aside class="notes">
+				JMeter may be used for Performance, Load, and Stress testing.
+				Performance - test "best possible" response under specified configuration and conditions.
+				Load - test performance with concurrent requests, profile the system - how components scale with traffic.
+				Stress - identify the breaking point of the system (max load).
+				</aside>
 			</section>
 			
 			<section>
-				<h2>Remote Desktop</h2>
-				<a href="http://www.2x.com/rdp-client/chrome/">2x.com</a>
-				<img src="2x.png" alt="2x">
-			</section>
-			
-			<section>
-				<section>
-					<h2>Development</h2>
-					<a href="https://c9.io/">https://c9.io/</a>
-					<img src="c9-1.png" alt="Cloud9 IDE">
-				</section>
-				<section>
-					<h2>Development</h2>
-					<a href="https://c9.io/">https://c9.io/</a>
-					<img src="c9-2.png" alt="Cloud9 IDE">
-				</section>
-				<section>
-					<h2>Development</h2>
-					<a href="https://c9.io/">https://c9.io/</a>
-					<img src="c9-3.png" alt="Cloud9 IDE">
-				</section>
-				<section>
-					<h2>Development</h2>
-					<a href="https://c9.io/">https://c9.io/</a>
-					<img src="c9-4.png" alt="Cloud9 IDE">
-				</section>
-			</section>
-			
-			<section>
-				<h2>Questions?</h2>
-				<p>
-					<a href="https://twitter.com/mrdowden">@mrdowden</a><br>
-					<a href="https://linkedin.com/in/mdowden">linkedin.com/in/mdowden</a>
-				</p>
+				<h2>Getting Started</h2>
+				<p>Download: <a href="http://jmeter.apache.org/">http://jmeter.apache.org/</a></p>
+				
+				
+				<aside class="notes">
+				Download (binary) of JMeter is a ZIP or TAR.GZ containing a single folder.
+				
+				</aside>
 			</section>
 
 		</div>
