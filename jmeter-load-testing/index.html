@@ -21,6 +21,7 @@
 	
 	<style>
 		.slides h2 .avatar { height: 80px; vertical-align: middle; }
+		.reveal .slides section img { border: none; }
 	</style>
 
 	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
@@ -65,11 +66,11 @@
 			<section>
 				<h2>Outline</h2>
 				<ol>
-					<li>Testing</li>
 					<li>What is JMeter</li>
 					<li>Getting Started</li>
 					<li>Basic Test</li>
 					<li>Advanced Options</li>
+					<li>Testing</li>
 					<li>Application: Answering software questions</li>
 					<li>Extend JMeter</li>
 					<li>Further Reading</li>
@@ -89,11 +90,338 @@
 				</ul>
 				
 				<aside class="notes">
+				I actually got a contract with Eli Lilly based upon my experience with tuning JVM-based
+				software, which is what I spoke on at Code PaLOUsa in 2013. While this background was totally
+				relevant I ended up creating an entire testing infrastructure and using JMeter to test
+				various attributes of a data management software solution to determine how it scaled with
+				load and data, and determine what system resources (CPU, RAM, I/O) would improve
+				performance and capacity.
 				</aside>
 			</section>
 
 			<section>
-				<h2></h2>
+				<section>
+					<h2>Apache JMeter</h2>
+					<p>Test performance and simulate load over various protocols:</p>
+					<ul>
+						<li>HTTP, HTTPS, SOAP (Web)</li>
+						<li>FTP</li>
+						<li>JDBC (Database)</li>
+						<li>LDAP</li>
+						<li>JMS (Middleware)</li>
+						<li>SMTP, POP, IMAP (Email)</li>
+						<li>MongoDB</li>
+						<li>TCP</li>
+						<li>Shell Scripts</li>
+					</ul>
+					
+					<aside class="notes">
+						JMeter may be used for Performance, Load, and Stress testing.
+						<b>Performance</b> test "best possible" response under specified configuration and conditions.
+						<b>Load</b> test performance with concurrent requests, profile the system - how components scale with traffic.
+						<b>Stress</b> identify the breaking point of the system (max load).
+					</aside>
+				</section>
+				
+				<section>
+					<h2>Apache JMeter</h2>
+					<h3>Features</h3>
+					<ul>
+						<li>Multithreaded</li>
+						<li>Distributed</li>
+						<li>Integrated recording</li>
+						<li>Error handling</li>
+						<li>Timing & Scheduling</li>
+						<li>Extensible</li>
+						<li>Scriptable</li>
+					</ul>
+					
+					<aside class="notes">
+					Why JMeter? Why not build something?<br>
+					I see JMeter as a pluggable thread-management platform. The core feature is its ability
+					to spawn and synchronize threads, including the recording of data they generate.
+					JMeter makes it easy to multithread requests, collaborate across multiple machines,
+					record results in combination across all testing nodes, and it handles errors gracefully.
+					Also, as you are about to see, getting started with JMeter is not that hard.
+					</aside>
+				</section>
+			</section>
+			
+			<section>
+				<section>
+					<h2>Getting Started</h2>
+					<ul>
+						<li>Download: <a href="http://jmeter.apache.org/">http://jmeter.apache.org/</a></li>
+						<li>Extract folder from ZIP or TAR.GZ</li>
+						<li>Run bin/jmeter.sh or bin/jmeter.bat</li>
+					</ul>
+					
+					<aside class="notes">
+					Download (binary) of JMeter is a ZIP or TAR.GZ containing a single folder.
+					</aside>
+				</section>
+				
+				<section>
+					<img src="blank.png" alt="JMeter">
+				</section>
+			</section>
+			
+			<section>
+				<section>
+					<h2>Minimum Viable Test</h2>
+					<ul>
+						<li>Thread Group</li>
+						<li>Sampler</li>
+						<li>Listener</li>
+					</ul>
+				</section>
+				
+				<section>
+					<img src="new-thread-group.png" alt="Select Thread Group">
+				</section>
+				
+				<section>
+					<img src="thread-group.png" alt="Thread Group">
+				</section>
+				
+				<section>
+					<img src="new-http-sampler.png" alt="Select Sampler">
+				</section>
+				
+				<section>
+					<img src="http-sampler.png" alt="HTTP Sampler">
+				</section>
+				
+				<section>
+					<img src="new-report-listener.png" alt="Select Listener">
+				</section>
+				
+				<section>
+					<img src="report-listener.png" alt="Aggregate Report Listener">
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Basic HTTP Test</h2>
+					<ul>
+						<li>Thread Group</li>
+						<li>HTTP Request Sampler</li>
+						<li>Summary Report Listener</li>
+					</ul>
+				</section>
+				
+				<section>
+					<img src="basic-http-1.png" alt="Configure Thread Group">
+				</section>
+				
+				<section>
+					<img src="basic-http-2.png" alt="Configure HTTP Sampler">
+					
+					<aside class="notes">
+					I am using a Node.js server for testing - actually the same server running my Reveal.js
+					presentation.
+					</aside>
+				</section>
+				
+				<section>
+					<img src="basic-http-3.png" alt="Configure Listener">
+				</section>
+				
+				<section>
+					<img src="basic-http-4.png" alt="View Results">
+				</section>
+				
+				<section>
+					<h3>http-results.xml</h3>
+					<pre><code data-trim>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;testResults version=&quot;1.2&quot;&gt;
+&lt;httpSample t=&quot;3&quot; lt=&quot;3&quot; ts=&quot;1393282802104&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-1&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802107&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-1&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802109&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-1&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802111&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-1&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802113&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-1&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802204&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-2&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802207&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-2&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802209&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-2&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802211&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-2&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802212&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-2&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802304&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-3&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802307&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-3&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802310&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-3&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;1&quot; ts=&quot;1393282802311&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-3&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802313&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-3&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802406&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-4&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802408&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-4&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802410&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-4&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802411&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-4&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802413&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-4&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802505&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-5&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;5&quot; lt=&quot;5&quot; ts=&quot;1393282802508&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-5&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802514&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-5&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802516&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-5&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802518&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-5&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802606&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-6&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802608&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-6&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802610&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-6&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802612&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-6&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802613&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-6&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802707&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-7&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802709&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-7&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802711&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-7&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802713&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-7&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802714&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-7&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802806&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-8&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802809&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-8&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802811&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-8&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802812&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-8&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802814&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-8&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282802906&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-9&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802909&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-9&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802911&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-9&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802912&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-9&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282802914&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-9&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803007&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-10&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803010&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-10&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803012&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-10&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803014&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-10&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803015&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-10&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803108&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-11&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803110&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-11&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803113&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-11&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803114&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-11&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803116&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-11&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803208&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-12&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803211&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-12&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803213&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-12&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803214&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-12&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803216&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-12&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803308&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-13&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;5&quot; lt=&quot;5&quot; ts=&quot;1393282803311&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-13&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803317&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-13&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803319&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-13&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803320&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-13&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803408&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-14&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803411&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-14&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803413&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-14&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803414&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-14&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803416&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-14&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803509&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-15&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803512&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-15&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803514&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-15&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803516&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-15&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803518&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-15&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803609&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-16&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803611&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-16&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803613&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-16&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803615&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-16&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803616&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-16&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803710&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-17&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803713&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-17&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803715&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-17&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803716&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-17&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803718&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-17&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803810&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-18&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803812&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-18&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803814&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-18&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803816&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-18&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803817&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-18&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282803911&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-19&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803913&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-19&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803915&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-19&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803917&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-19&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282803918&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-19&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;2&quot; lt=&quot;2&quot; ts=&quot;1393282804011&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-20&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282804013&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-20&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282804015&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-20&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282804017&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-20&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+&lt;httpSample t=&quot;1&quot; lt=&quot;1&quot; ts=&quot;1393282804018&quot; s=&quot;true&quot; lb=&quot;Local Web Root&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic HTTP Test 1-20&quot; dt=&quot;text&quot; by=&quot;735&quot;/&gt;
+
+&lt;/testResults&gt;
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Basic JDBC Test</h2>
+					<ul>
+						<li>JDBC Connection Configuration</li>
+						<li>Thread Group</li>
+						<li>JDBC Request Sampler</li>
+						<li>Summary Report Listener</li>
+					</ul>
+					
+					<aside class="notes">
+					Before running a JDBC test you'll need to install the JDBC Driver JAR. To do this, simply
+					copy the JAR into the /lib/ folder of JMeter. Alternatively, you may modify the
+					<code>user.classpath</code> in <b>jmeter.properties</b> to include the location of your
+					JDBC Driver JAR.
+					</aside>
+				</section>
+				
+				<section>
+					<img src="basic-jdbc-1.png" alt="Add JDBC Connection Configuration">
+					
+					<aside class="notes">
+					I am using the free MaxMind GeoLite IP Geolocation database for testing. I am also using
+					Derby for demonstration since it is a small, well contained database which doesn't
+					impact your system configuration.
+					</aside>
+				</section>
+				
+				<section>
+					<img src="basic-jdbc-2.png" alt="Add JDBC Request Sampler">
+					
+					<aside class="notes">
+					Due to a limitation of Derby I am keeping the thread count at 1.
+					</aside>
+				</section>
+				
+				<section>
+					<img src="basic-jdbc-3.png" alt="Configure JDBC Connection">
+					
+					<aside class="notes">
+					Pay close attention to the "variable name" field, which here is set to "derby". This
+					name will be used again on the JDBC Sampler to associate with these connection details.
+					</aside>
+				</section>
+				
+				<section>
+					<img src="basic-jdbc-4.png" alt="Configure Thread Group">
+				</section>
+				
+				<section>
+					<img src="basic-jdbc-5.png" alt="Configure JDBC Sampler">
+				</section>
+				
+				<section>
+					<img src="basic-jdbc-6.png" alt="Configure Listener">
+				</section>
+				
+				<section>
+					<img src="basic-jdbc-7.png" alt="View Results">
+				</section>
+
+				<section>
+					<h3>http-results.xml</h3>
+					<pre><code data-trim>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;testResults version=&quot;1.2&quot;&gt;
+&lt;sample t=&quot;1508&quot; lt=&quot;4&quot; ts=&quot;1393282693623&quot; s=&quot;true&quot; lb=&quot;Select From Location&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic JDBC Test 1-1&quot; dt=&quot;text&quot; by=&quot;23370113&quot;/&gt;
+&lt;sample t=&quot;1558&quot; lt=&quot;0&quot; ts=&quot;1393282695131&quot; s=&quot;true&quot; lb=&quot;Select From Location&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic JDBC Test 1-1&quot; dt=&quot;text&quot; by=&quot;23370113&quot;/&gt;
+&lt;sample t=&quot;1502&quot; lt=&quot;0&quot; ts=&quot;1393282696690&quot; s=&quot;true&quot; lb=&quot;Select From Location&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic JDBC Test 1-1&quot; dt=&quot;text&quot; by=&quot;23370113&quot;/&gt;
+&lt;sample t=&quot;1502&quot; lt=&quot;1&quot; ts=&quot;1393282698192&quot; s=&quot;true&quot; lb=&quot;Select From Location&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic JDBC Test 1-1&quot; dt=&quot;text&quot; by=&quot;23370113&quot;/&gt;
+&lt;sample t=&quot;1510&quot; lt=&quot;0&quot; ts=&quot;1393282699694&quot; s=&quot;true&quot; lb=&quot;Select From Location&quot; rc=&quot;200&quot; rm=&quot;OK&quot; tn=&quot;Basic JDBC Test 1-1&quot; dt=&quot;text&quot; by=&quot;23370113&quot;/&gt;
+
+&lt;/testResults&gt;
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<h2>Testing</h2>
 				
 				<aside class="notes">
 				</aside>
@@ -121,46 +449,19 @@
 			</section>
 			
 			<section>
-				<h2></h2>
-				
-				<aside class="notes">
-				</aside>
-			</section>
-			
-			<section>
-				<h2>Apache JMeter</h2>
-				<p>Test performance and simulate load over various protocols:</p>
+				<h2>Resources</h2>
 				<ul>
-					<li>HTTP, HTTPS, SOAP (Web)</li>
-					<li>FTP</li>
-					<li>JDBC (Database)</li>
-					<li>LDAP</li>
-					<li>JMS (Middleware)</li>
-					<li>SMTP, POP, IMAP (Email)</li>
-					<li>MongoDB</li>
-					<li>TCP</li>
-					<li>Shell Scripts</li>
+					<li>http://jmeter.apache.org/</li>
+					<li>http://jmeter-plugins.org/</li>
+					<li>http://db.apache.org/derby/</li>
+					<li>http://dev.maxmind.com/geoip/legacy/geolite/</li>
+					<li>Presentation Powered by reveal.js: http://lab.hakim.se/reveal-js/</li>
 				</ul>
 				
 				<aside class="notes">
-				JMeter may be used for Performance, Load, and Stress testing.
-				Performance - test "best possible" response under specified configuration and conditions.
-				Load - test performance with concurrent requests, profile the system - how components scale with traffic.
-				Stress - identify the breaking point of the system (max load).
 				</aside>
 			</section>
 			
-			<section>
-				<h2>Getting Started</h2>
-				<p>Download: <a href="http://jmeter.apache.org/">http://jmeter.apache.org/</a></p>
-				
-				
-				<aside class="notes">
-				Download (binary) of JMeter is a ZIP or TAR.GZ containing a single folder.
-				
-				</aside>
-			</section>
-
 		</div>
 	</div>
 
