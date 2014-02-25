@@ -22,6 +22,7 @@
 	<style>
 		.slides h2 .avatar { height: 80px; vertical-align: middle; }
 		.reveal .slides section img { border: none; }
+		.reveal .small { font-size: 75%; }
 	</style>
 
 	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
@@ -49,35 +50,6 @@
 			</section>
 			
 			<section>
-				<h2>Understand your Software</h2>
-				<ul>
-					<li class="fragment">How many concurrent users can it support?</li>
-					<li class="fragment">What is the response time for each page/service?</li>
-					<li class="fragment">Does response time fluctuate throughout the day?</li>
-					<li class="fragment">How does your application scale with users, data, or hits?</li>
-					<li class="fragment">What performance bottlenecks exist?</li>
-				</ul>
-				
-				<aside class="notes">
-				How well do you REALLY know your software?  /ENGAGE AUDIENCE/ What other questions do you have about software you are currently working with?
-				</aside>
-			</section>
-			
-			<section>
-				<h2>Outline</h2>
-				<ol>
-					<li>What is JMeter</li>
-					<li>Getting Started</li>
-					<li>Basic Test</li>
-					<li>Advanced Options</li>
-					<li>Testing</li>
-					<li>Application: Answering software questions</li>
-					<li>Extend JMeter</li>
-					<li>Further Reading</li>
-				</ol>
-			</section>
-			
-			<section>
 				<h2>About Me</h2>
 				<ul>
 					<li>Learned JMeter consulting for Eli Lilly</li>
@@ -100,6 +72,35 @@
 			</section>
 
 			<section>
+				<h2>Understand your Software</h2>
+				<ul>
+					<li class="fragment">How many concurrent users can it support?</li>
+					<li class="fragment">What is the response time for each page/service?</li>
+					<li class="fragment">Does response time fluctuate throughout the day?</li>
+					<li class="fragment">How does your application scale with users, data, or hits?</li>
+					<li class="fragment">What performance bottlenecks exist?</li>
+				</ul>
+				
+				<aside class="notes">
+				How well do you REALLY know your software?  /ENGAGE AUDIENCE/ What other questions do you have about software you are currently working with?
+				</aside>
+			</section>
+			
+			<section>
+				<h2>Outline</h2>
+				<ol>
+					<li class="fragment">What is JMeter</li>
+					<li class="fragment">Getting Started</li>
+					<li class="fragment">Basic Tests</li>
+					<li class="fragment">Testing Overview</li>
+					<li class="fragment">Test Design</li>
+					<li class="fragment">Advanced Topics</li>
+					<li class="fragment">Extending JMeter</li>
+					<li class="fragment">Further Reading</li>
+				</ol>
+			</section>
+			
+			<section>
 				<section>
 					<h2>Apache JMeter</h2>
 					<p>Test performance and simulate load over various protocols:</p>
@@ -117,10 +118,13 @@
 					
 					<aside class="notes">
 						JMeter may be used for Performance, Load, and Stress testing.
-						<b>Performance</b> test "best possible" response under specified configuration and conditions.
-						<b>Load</b> test performance with concurrent requests, profile the system - how components scale with traffic.
-						<b>Stress</b> identify the breaking point of the system (max load).
 					</aside>
+				</section>
+
+				<section>
+					<p>
+						<a href="http://geekandpoke.typepad.com/geekandpoke/2009/03/stress-test.html"><img style="height: 800px" src="http://geekandpoke.typepad.com/.a/6a00d8341d3df553ef01116901f637970c-800wi" alt="Cartoon"></a>
+					</p>
 				</section>
 				
 				<section>
@@ -421,28 +425,629 @@
 			</section>
 
 			<section>
-				<h2>Testing</h2>
+				<section>
+					<h2>Testing</h2>
+					<ul>
+						<li class="fragment">Visibility: Black box, Gray box</li>
+						<li class="fragment">Levels: Integration, Component interface, System</li>
+						<li class="fragment">Types: Smoke, Regression, Performance</li>
+					</ul>
+					
+					<aside class="notes">
+					Testing against external APIs, however may be privileged to run against various components. Also understanding
+					of architecture may drive test design. May test end-to-end, verify interfaces, and check data between units.
+					</aside>
+				</section>
 				
-				<aside class="notes">
-				</aside>
+				<section>
+					<p>
+						<a href="http://dilbert.com/strips/comic/2009-12-29/"><img src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/70000/7000/900/77968/77968.strip.gif" alt="Dilbert"></a>
+					</p>
+				</section>
+
+				<section>
+					<h2>Testing</h2>
+					<ul>
+						<li class="fragment">Performance: Best possible response</li>
+						<li class="fragment">Load: Performance with standard traffic</li>
+						<li class="fragment">Stress: Find system breaking point</li>
+					</ul>
+					<br><br>
+					<p class="fragment"><b>WARNING:</b> May crash your server.</p>
+					
+					<aside class="notes">
+						WARNING: This is basically a DOS attack and may bring down your servers. You have been warned.
+						<b>Performance</b> test "best possible" response under specified configuration and conditions.
+						<b>Load</b> test performance with concurrent requests, profile the system - how components scale with traffic.
+						<b>Stress</b> identify the breaking point of the system (max load).
+					</aside>
+				</section>
 			</section>
 			
 			<section>
-				<h2></h2>
+				<section>
+					<h2>Test Design</h2>
+					<ul>
+						<li>Best performance</li>
+						<li>Maximum capacity</li>
+						<li>Performance at peak load</li>
+						<li>System bottlenecks</li>
+						<li>Profiling of system</li>
+					</ul>
+					
+					<aside class="notes">
+					Your tests should answer a question. May use other applications to collect data such as JMX, Zabbix, or system
+					monitors.
+					Narrate testing data solutions at Eli Lilly.
+					/ENGAGE/ Describe testing applications, ask for suggested uses.
+					</aside>
+				</section>
 				
-				<aside class="notes">
-				</aside>
+				<section>
+					<p>
+						<a href="http://dilbert.com/strips/comic/2010-08-11/"><img src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/90000/7000/100/97127/97127.strip.gif" alt="Dilbert"></a>
+					</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Advanced Topics</h2>
+					<ul>
+						<li>Parameterize tests</li>
+						<li>Combine tests</li>
+						<li>Multiple nodes</li>
+						<li>Run from command line</li>
+						<li>Edit XML</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Parameterize tests</h2>
+					<p><img src="test-plan-variables.png" alt="Test Plan Variables"></p>
+					<pre><code>${sample_size}</code></pre>
+					<pre><code>${__javaScript('${sample_size}'*'${test_variants}')}</code></pre>
+					
+					<aside class="notes">
+					Many built-in functions exists. May write JavaScript or BeanShell scripts for more advanced functions.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Combine tests</h2>
+					<img src="full-jdbc-example.png" alt="JDBC Example">
+				</section>
+
+				<section>
+					<h2>Multiple nodes</h2>
+					<ul>
+						<li>Configure nodes (Same Java & JMeter versions)</li>
+						<li>Start servers (/bin/jmeter-server)</li>
+						<li>List servers in /bin/jmeter.properties (remote_hosts)</li>
+						<li>Start JMeter Client from GUI</li>
+					</ul>
+					
+					<aside class="notes">
+					Part of the power of JMeter is the ability to not only spawn multiple threads, but to synchronize threads
+					across multiple machines in a network. This can be a great candidate for temporary nodes on EC2.
+					Start using Run > Remote Start All, clicking double green arrows, or CTRL+SHIFT+R.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Run from command line</h2>
+					<code>
+						jmeter -n -t script.jmx -R 10.10.0.1,10.10.0.2,hostname3
+					</code>
+					
+					<aside class="notes">
+					-n means no GUI, -t specifies JMX script, -R provides remote servers
+					</aside>
+				</section>
+
+				<section>
+					<h2>Edit XML</h2>
+					<pre><code data-trim>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;jmeterTestPlan version=&quot;1.2&quot; properties=&quot;2.6&quot; jmeter=&quot;2.11 r1554548&quot;&gt;
+  &lt;hashTree&gt;
+    &lt;TestPlan guiclass=&quot;TestPlanGui&quot; testclass=&quot;TestPlan&quot; testname=&quot;Test Plan&quot; enabled=&quot;true&quot;&gt;
+      &lt;stringProp name=&quot;TestPlan.comments&quot;&gt;&lt;/stringProp&gt;
+      &lt;boolProp name=&quot;TestPlan.functional_mode&quot;&gt;false&lt;/boolProp&gt;
+      &lt;boolProp name=&quot;TestPlan.serialize_threadgroups&quot;&gt;false&lt;/boolProp&gt;
+      &lt;elementProp name=&quot;TestPlan.user_defined_variables&quot; elementType=&quot;Arguments&quot; guiclass=&quot;ArgumentsPanel&quot; testclass=&quot;Arguments&quot; testname=&quot;User Defined Variables&quot; enabled=&quot;true&quot;&gt;
+        &lt;collectionProp name=&quot;Arguments.arguments&quot;/&gt;
+      &lt;/elementProp&gt;
+      &lt;stringProp name=&quot;TestPlan.user_define_classpath&quot;&gt;&lt;/stringProp&gt;
+    &lt;/TestPlan&gt;
+    &lt;hashTree&gt;
+      &lt;ThreadGroup guiclass=&quot;ThreadGroupGui&quot; testclass=&quot;ThreadGroup&quot; testname=&quot;Basic HTTP Test&quot; enabled=&quot;true&quot;&gt;
+        &lt;stringProp name=&quot;ThreadGroup.on_sample_error&quot;&gt;continue&lt;/stringProp&gt;
+        &lt;elementProp name=&quot;ThreadGroup.main_controller&quot; elementType=&quot;LoopController&quot; guiclass=&quot;LoopControlPanel&quot; testclass=&quot;LoopController&quot; testname=&quot;Loop Controller&quot; enabled=&quot;true&quot;&gt;
+          &lt;boolProp name=&quot;LoopController.continue_forever&quot;&gt;false&lt;/boolProp&gt;
+          &lt;stringProp name=&quot;LoopController.loops&quot;&gt;5&lt;/stringProp&gt;
+        &lt;/elementProp&gt;
+        &lt;stringProp name=&quot;ThreadGroup.num_threads&quot;&gt;20&lt;/stringProp&gt;
+        &lt;stringProp name=&quot;ThreadGroup.ramp_time&quot;&gt;2&lt;/stringProp&gt;
+        &lt;longProp name=&quot;ThreadGroup.start_time&quot;&gt;1393281114000&lt;/longProp&gt;
+        &lt;longProp name=&quot;ThreadGroup.end_time&quot;&gt;1393281114000&lt;/longProp&gt;
+        &lt;boolProp name=&quot;ThreadGroup.scheduler&quot;&gt;false&lt;/boolProp&gt;
+        &lt;stringProp name=&quot;ThreadGroup.duration&quot;&gt;&lt;/stringProp&gt;
+        &lt;stringProp name=&quot;ThreadGroup.delay&quot;&gt;&lt;/stringProp&gt;
+      &lt;/ThreadGroup&gt;
+      &lt;hashTree&gt;
+        &lt;HTTPSamplerProxy guiclass=&quot;HttpTestSampleGui&quot; testclass=&quot;HTTPSamplerProxy&quot; testname=&quot;Local Web Root&quot; enabled=&quot;true&quot;&gt;
+          &lt;elementProp name=&quot;HTTPsampler.Arguments&quot; elementType=&quot;Arguments&quot; guiclass=&quot;HTTPArgumentsPanel&quot; testclass=&quot;Arguments&quot; testname=&quot;User Defined Variables&quot; enabled=&quot;true&quot;&gt;
+            &lt;collectionProp name=&quot;Arguments.arguments&quot;/&gt;
+          &lt;/elementProp&gt;
+          &lt;stringProp name=&quot;HTTPSampler.domain&quot;&gt;localhost&lt;/stringProp&gt;
+          &lt;stringProp name=&quot;HTTPSampler.port&quot;&gt;8080&lt;/stringProp&gt;
+          &lt;stringProp name=&quot;HTTPSampler.connect_timeout&quot;&gt;500&lt;/stringProp&gt;
+          &lt;stringProp name=&quot;HTTPSampler.response_timeout&quot;&gt;250&lt;/stringProp&gt;
+          &lt;stringProp name=&quot;HTTPSampler.protocol&quot;&gt;&lt;/stringProp&gt;
+          &lt;stringProp name=&quot;HTTPSampler.contentEncoding&quot;&gt;&lt;/stringProp&gt;
+          &lt;stringProp name=&quot;HTTPSampler.path&quot;&gt;/&lt;/stringProp&gt;
+          &lt;stringProp name=&quot;HTTPSampler.method&quot;&gt;GET&lt;/stringProp&gt;
+          &lt;boolProp name=&quot;HTTPSampler.follow_redirects&quot;&gt;true&lt;/boolProp&gt;
+          &lt;boolProp name=&quot;HTTPSampler.auto_redirects&quot;&gt;false&lt;/boolProp&gt;
+          &lt;boolProp name=&quot;HTTPSampler.use_keepalive&quot;&gt;true&lt;/boolProp&gt;
+          &lt;boolProp name=&quot;HTTPSampler.DO_MULTIPART_POST&quot;&gt;false&lt;/boolProp&gt;
+          &lt;stringProp name=&quot;HTTPSampler.implementation&quot;&gt;HttpClient4&lt;/stringProp&gt;
+          &lt;boolProp name=&quot;HTTPSampler.monitor&quot;&gt;false&lt;/boolProp&gt;
+          &lt;stringProp name=&quot;HTTPSampler.embedded_url_re&quot;&gt;&lt;/stringProp&gt;
+        &lt;/HTTPSamplerProxy&gt;
+        &lt;hashTree/&gt;
+      &lt;/hashTree&gt;
+      &lt;ResultCollector guiclass=&quot;SummaryReport&quot; testclass=&quot;ResultCollector&quot; testname=&quot;Summary Report&quot; enabled=&quot;true&quot;&gt;
+        &lt;boolProp name=&quot;ResultCollector.error_logging&quot;&gt;false&lt;/boolProp&gt;
+        &lt;objProp&gt;
+          &lt;name&gt;saveConfig&lt;/name&gt;
+          &lt;value class=&quot;SampleSaveConfiguration&quot;&gt;
+            &lt;time&gt;true&lt;/time&gt;
+            &lt;latency&gt;true&lt;/latency&gt;
+            &lt;timestamp&gt;true&lt;/timestamp&gt;
+            &lt;success&gt;true&lt;/success&gt;
+            &lt;label&gt;true&lt;/label&gt;
+            &lt;code&gt;true&lt;/code&gt;
+            &lt;message&gt;true&lt;/message&gt;
+            &lt;threadName&gt;true&lt;/threadName&gt;
+            &lt;dataType&gt;true&lt;/dataType&gt;
+            &lt;encoding&gt;false&lt;/encoding&gt;
+            &lt;assertions&gt;true&lt;/assertions&gt;
+            &lt;subresults&gt;true&lt;/subresults&gt;
+            &lt;responseData&gt;false&lt;/responseData&gt;
+            &lt;samplerData&gt;false&lt;/samplerData&gt;
+            &lt;xml&gt;true&lt;/xml&gt;
+            &lt;fieldNames&gt;false&lt;/fieldNames&gt;
+            &lt;responseHeaders&gt;false&lt;/responseHeaders&gt;
+            &lt;requestHeaders&gt;false&lt;/requestHeaders&gt;
+            &lt;responseDataOnError&gt;false&lt;/responseDataOnError&gt;
+            &lt;saveAssertionResultsFailureMessage&gt;false&lt;/saveAssertionResultsFailureMessage&gt;
+            &lt;assertionsResultsToSave&gt;0&lt;/assertionsResultsToSave&gt;
+            &lt;bytes&gt;true&lt;/bytes&gt;
+          &lt;/value&gt;
+        &lt;/objProp&gt;
+        &lt;stringProp name=&quot;filename&quot;&gt;~\http-results.xml&lt;/stringProp&gt;
+      &lt;/ResultCollector&gt;
+      &lt;hashTree/&gt;
+    &lt;/hashTree&gt;
+  &lt;/hashTree&gt;
+&lt;/jmeterTestPlan&gt;
+					</code></pre>
+				</section>
 			</section>
 			
 			<section>
-				<h2></h2>
-				
-				<aside class="notes">
-				</aside>
+				<h2>Extending JMeter: Plugins</h2>
+				<h3><a href="http://jmeter-plugins.org/wiki/StandardSet/">Standard Set</a></h3>
+				<h3><a href="http://jmeter-plugins.org/wiki/ExtrasSet/">Extras Set</a></h3>
 			</section>
 			
 			<section>
-				<h2></h2>
+				<section>
+					<h2>Extending JMeter: Customization</h2>
+					<ul>
+						<li>&lt;component_name&gt;.java</li>
+						<li>&lt;component_name&gt;BeanInfo.java</li>
+						<li>&lt;component_name&gt;Resources.properties</li>
+					</ul>
+					
+					<aside class="notes">
+					JMeter can be extended by creating plugins in Java and putting the JAR into the lib/ext
+					folder. Here is an example of a simple JDBC sampler I created for testing purposes. We
+					discovered that this was necessary to isolate DB performance from network performance.
+					</aside>
+				</section>
+
+				<section>
+					<h2>JDBCFetchlessSampler.java</h2>
+					<pre><code data-trim>
+package org.apache.jmeter.protocol.jdbc.sampler;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.apache.jmeter.protocol.jdbc.AbstractJDBCTestElement;
+import org.apache.jmeter.save.CSVSaveService;
+import org.apache.jmeter.util.JMeterUtils;
+import org.apache.jorphan.logging.LoggingManager;
+import org.apache.log.Logger;
+
+public class JDBCFetchlessSampler extends JDBCSampler {
+	private static final long serialVersionUID = -659610836561775584L;
+
+	private static final Logger log = LoggingManager.getLoggerForClass();
+
+	private static final String COMMA = &quot;,&quot;; // $NON-NLS-1$
+	private static final char COMMA_CHAR = &apos;,&apos;;
+
+	// String used to indicate a null value
+	private static final String NULL_MARKER = JMeterUtils.getPropDefault(
+			&quot;jdbcsampler.nullmarker&quot;, &quot;]NULL[&quot;); // $NON-NLS-1$
+
+	private static final String INOUT = &quot;INOUT&quot;; // $NON-NLS-1$
+
+	private static final String OUT = &quot;OUT&quot;; // $NON-NLS-1$
+
+	// key: name (lowercase) from java.sql.Types; entry: corresponding int value
+	private static final Map&lt;String, Integer&gt; mapJdbcNameToInt;
+	// read-only after class init
+
+	static {
+		// based on e291. Getting the Name of a JDBC Type from javaalmanac.com
+		// http://javaalmanac.com/egs/java.sql/JdbcInt2Str.html
+		mapJdbcNameToInt = new HashMap&lt;String, Integer&gt;();
+
+		// Get all fields in java.sql.Types and store the corresponding int
+		// values
+		Field[] fields = java.sql.Types.class.getFields();
+		for (int i = 0; i &lt; fields.length; i++) {
+			try {
+				String name = fields[i].getName();
+				Integer value = (Integer) fields[i].get(null);
+				mapJdbcNameToInt.put(
+						name.toLowerCase(java.util.Locale.ENGLISH), value);
+			} catch (IllegalAccessException e) {
+				throw new RuntimeException(e); // should not happen
+			}
+		}
+	}
+
+	// Query types (used to communicate with GUI)
+	// N.B. These must not be changed, as they are used in the JMX files
+	public static final String SELECT = &quot;Select Statement&quot;; // $NON-NLS-1$
+	public static final String UPDATE = &quot;Update Statement&quot;; // $NON-NLS-1$
+	public static final String CALLABLE = &quot;Callable Statement&quot;; // $NON-NLS-1$
+	public static final String PREPARED_SELECT = &quot;Prepared Select Statement&quot;; // $NON-NLS-1$
+	public static final String PREPARED_UPDATE = &quot;Prepared Update Statement&quot;; // $NON-NLS-1$
+	public static final String COMMIT = &quot;Commit&quot;; // $NON-NLS-1$
+	public static final String ROLLBACK = &quot;Rollback&quot;; // $NON-NLS-1$
+	public static final String AUTOCOMMIT_FALSE = &quot;AutoCommit(false)&quot;; // $NON-NLS-1$
+	public static final String AUTOCOMMIT_TRUE = &quot;AutoCommit(true)&quot;; // $NON-NLS-1$
+
+	/**
+	 * Cache of PreparedStatements stored in a per-connection basis. Each entry
+	 * of this cache is another Map mapping the statement string to the actual
+	 * PreparedStatement. At one time a Connection is only held by one thread
+	 */
+	private static final Map&lt;Connection, Map&lt;String, PreparedStatement&gt;&gt; perConnCache = new ConcurrentHashMap&lt;Connection, Map&lt;String, PreparedStatement&gt;&gt;();
+
+	/**
+	 * Creates a No-Fetch JDBCSampler.
+	 */
+	public JDBCFetchlessSampler() {
+
+	}
+
+	@Override
+	protected byte[] execute(Connection conn) throws SQLException,
+			UnsupportedEncodingException, IOException,
+			UnsupportedOperationException {
+		log.debug(&quot;executing jdbc&quot;);
+		Statement stmt = null;
+
+		try {
+			// Based on query return value, get results
+			String _queryType = getQueryType();
+			if (SELECT.equals(_queryType)) {
+				stmt = conn.createStatement();
+				ResultSet rs = null;
+				try {
+					rs = stmt.executeQuery(getQuery());
+					return getStringFromResultSet(rs).getBytes(ENCODING);
+				} finally {
+					close(rs);
+				}
+			} else if (CALLABLE.equals(_queryType)) {
+				return super.execute(conn);
+			} else if (UPDATE.equals(_queryType)) {
+				return super.execute(conn);
+			} else if (PREPARED_SELECT.equals(_queryType)) {
+				PreparedStatement pstmt = getPreparedStatement(conn);
+				setArguments(pstmt);
+				ResultSet rs = null;
+				try {
+					rs = pstmt.executeQuery();
+					return getStringFromResultSet(rs).getBytes(ENCODING);
+				} finally {
+					close(rs);
+				}
+			} else if (PREPARED_UPDATE.equals(_queryType)) {
+				return super.execute(conn);
+			} else if (ROLLBACK.equals(_queryType)) {
+				return super.execute(conn);
+			} else if (COMMIT.equals(_queryType)) {
+				return super.execute(conn);
+			} else if (AUTOCOMMIT_FALSE.equals(_queryType)) {
+				return super.execute(conn);
+			} else if (AUTOCOMMIT_TRUE.equals(_queryType)) {
+				return super.execute(conn);
+			} else { // User provided incorrect query type
+				return super.execute(conn);
+			}
+		} finally {
+			close(stmt);
+		}
+	}
+
+	/**
+	 * Gets a Data object from a ResultSet.
+	 * 
+	 * @param rs
+	 *            ResultSet passed in from a database query
+	 * @return a Data object
+	 * @throws java.sql.SQLException
+	 * @throws UnsupportedEncodingException
+	 */
+	private String getStringFromResultSet(ResultSet rs) throws SQLException,
+			UnsupportedEncodingException {
+		ResultSetMetaData meta = rs.getMetaData();
+
+		StringBuilder sb = new StringBuilder();
+
+		int numColumns = meta.getColumnCount();
+		for (int i = 1; i &lt;= numColumns; i++) {
+			sb.append(meta.getColumnName(i));
+			if (i == numColumns) {
+				sb.append(&apos;\n&apos;);
+			} else {
+				sb.append(&apos;\t&apos;);
+			}
+		}
+
+		return sb.toString();
+	}
+
+	/**
+	 * Direct copy from {@link AbstractJDBCTestElement}.
+	 */
+	private PreparedStatement getPreparedStatement(Connection conn)
+			throws SQLException {
+		final boolean callable = false;
+		Map&lt;String, PreparedStatement&gt; preparedStatementMap = perConnCache
+				.get(conn);
+		if (null == preparedStatementMap) {
+			preparedStatementMap = new ConcurrentHashMap&lt;String, PreparedStatement&gt;();
+			// As a connection is held by only one thread, we cannot already
+			// have a
+			// preparedStatementMap put by another thread
+			perConnCache.put(conn, preparedStatementMap);
+		}
+		PreparedStatement pstmt = preparedStatementMap.get(getQuery());
+		if (null == pstmt) {
+			if (callable) {
+				pstmt = conn.prepareCall(getQuery());
+			} else {
+				pstmt = conn.prepareStatement(getQuery());
+			}
+			// PreparedStatementMap is associated to one connection so
+			// 2 threads cannot use the same PreparedStatement map at the same
+			// time
+			preparedStatementMap.put(getQuery(), pstmt);
+		}
+		pstmt.clearParameters();
+		return pstmt;
+	}
+
+	/**
+	 * Direct copy from {@link AbstractJDBCTestElement}.
+	 */
+	private int[] setArguments(PreparedStatement pstmt) throws SQLException,
+			IOException {
+		if (getQueryArguments().trim().length() == 0) {
+			return new int[] {};
+		}
+		String[] arguments = CSVSaveService.csvSplitString(getQueryArguments(),
+				COMMA_CHAR);
+		String[] argumentsTypes = getQueryArgumentsTypes().split(COMMA);
+		if (arguments.length != argumentsTypes.length) {
+			throw new SQLException(&quot;number of arguments (&quot; + arguments.length
+					+ &quot;) and number of types (&quot; + argumentsTypes.length
+					+ &quot;) are not equal&quot;);
+		}
+		int[] outputs = new int[arguments.length];
+		for (int i = 0; i &lt; arguments.length; i++) {
+			String argument = arguments[i];
+			String argumentType = argumentsTypes[i];
+			String[] arg = argumentType.split(&quot; &quot;);
+			String inputOutput = &quot;&quot;;
+			if (arg.length &gt; 1) {
+				argumentType = arg[1];
+				inputOutput = arg[0];
+			}
+			int targetSqlType = getJdbcType(argumentType);
+			try {
+				if (!OUT.equalsIgnoreCase(inputOutput)) {
+					if (argument.equals(NULL_MARKER)) {
+						pstmt.setNull(i + 1, targetSqlType);
+					} else {
+						pstmt.setObject(i + 1, argument, targetSqlType);
+					}
+				}
+				if (OUT.equalsIgnoreCase(inputOutput)
+						|| INOUT.equalsIgnoreCase(inputOutput)) {
+					CallableStatement cs = (CallableStatement) pstmt;
+					cs.registerOutParameter(i + 1, targetSqlType);
+					outputs[i] = targetSqlType;
+				} else {
+					outputs[i] = java.sql.Types.NULL; // can&apos;t have an output
+														// parameter type null
+				}
+			} catch (NullPointerException e) { // thrown by Derby JDBC (at
+												// least) if there are no &quot;?&quot;
+												// markers in statement
+				throw new SQLException(&quot;Could not set argument no: &quot; + (i + 1)
+						+ &quot; - missing parameter marker?&quot;);
+			}
+		}
+		return outputs;
+	}
+
+	/**
+	 * Direct copy from {@link AbstractJDBCTestElement}.
+	 */
+	private static int getJdbcType(String jdbcType) throws SQLException {
+		Integer entry = mapJdbcNameToInt.get(jdbcType
+				.toLowerCase(java.util.Locale.ENGLISH));
+		if (entry == null) {
+			try {
+				entry = Integer.decode(jdbcType);
+			} catch (NumberFormatException e) {
+				throw new SQLException(&quot;Invalid data type: &quot; + jdbcType);
+			}
+		}
+		return (entry).intValue();
+	}
+
+}
+					</code></pre>
+				</section>
+				
+				<section>
+					<h2>(continued)</h2>
+					<pre><code data-trim>
+private String getStringFromResultSet(ResultSet rs) throws SQLException,
+		UnsupportedEncodingException {
+	ResultSetMetaData meta = rs.getMetaData();
+
+	StringBuilder sb = new StringBuilder();
+
+	int numColumns = meta.getColumnCount();
+	for (int i = 1; i <= numColumns; i++) {
+		sb.append(meta.getColumnName(i));
+		if (i == numColumns) {
+			sb.append('\n');
+		} else {
+			sb.append('\t');
+		}
+	}
+
+	return sb.toString();
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JDBCFetchlessSamplerBeanInfo.java</h2>
+					<pre><code data-trim>
+package org.apache.jmeter.protocol.jdbc.sampler;
+
+import org.apache.jmeter.protocol.jdbc.JDBCTestElementBeanInfoSupport;
+
+public class JDBCFetchlessSamplerBeanInfo extends
+		JDBCTestElementBeanInfoSupport {
+
+	public JDBCFetchlessSamplerBeanInfo() {
+		super(JDBCFetchlessSampler.class);
+	}
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>JDBCFetchlessSamplerResources.properties</h3>
+					<pre><code data-trim>
+#   Licensed to the Apache Software Foundation (ASF) under one or more
+#   contributor license agreements.  See the NOTICE file distributed with
+#   this work for additional information regarding copyright ownership.
+#   The ASF licenses this file to You under the Apache License, Version 2.0
+#   (the &quot;License&quot;); you may not use this file except in compliance with
+#   the License.  You may obtain a copy of the License at
+# 
+#       http://www.apache.org/licenses/LICENSE-2.0
+# 
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+displayName=JDBC Fetchless Sampler
+varName.displayName=Variable Name Bound to Pool
+sql.displayName=SQL Query
+query.displayName=Query
+query.shortDescription=SQL Query to send to database
+queryType.displayName=Query Type
+queryType.shortDescription=Determines if the SQL statement should be run as a select statement or an update statement.
+dataSource.displayName=Variable Name
+dataSource.shortDescription=Name of the JMeter variable that the connection pool is bound to.
+queryArguments.displayName=Parameter values
+queryArguments.shortDescription=SQL parameter values (comma separated)
+queryArgumentsTypes.displayName=Parameter types
+queryArgumentsTypes.shortDescription=JDBC Type names from java.sql.Types. VARCHAR, INTEGER, etc. (comma separated)
+variableNames.displayName=Variable names
+variableNames.shortDescription=Output variable names for each column  (comma separated)
+resultVariable.displayName=Result variable name
+resultVariable.shortDescription=Name of the JMeter variable that stores the result set objects in a list of maps for looking up results by column name.
+					</code></pre>
+				</section>
+			</section>
+			
+			<section>
+				<section>
+					<h2>Other Uses</h2>
+					<ul>
+						<li class="fragment">Integration Testing</li>
+						<li class="fragment">Regression Testing</li>
+						<li class="fragment">Performance Monitoring</li>
+					</ul>
+					
+					<aside class="notes">
+					Once you have set up a number of tests you may discover you have enough coverage to
+					perform meaningful Integration or Regression testing against your application. Not only
+					will you be able to test HTTP status codes, but also response times. In combination with
+					schedules and timers you can perform periodic performance tests against your production
+					system to check for performance issues.
+					</aside>
+				</section>
+				
+				<section>
+					<p>
+						<img src="lol-codetesting.jpg" alt="Humor">
+					</p>
+				</section>
+			</section>
+			
+			<section>
+				<h2>Learn More</h2>
+				<ul>
+					<li><a href="http://jmeter.apache.org/usermanual/index.html">User Manual</a></li>
+					<li><a href="http://jmeter.apache.org/usermanual/best-practices.html">Best Practices</a></li>
+					<li><a href="http://jmeter.apache.org/usermanual/component_reference.html">Component Reference</a></li>
+					<li><a href="http://jmeter.apache.org/usermanual/functions.html">Function Reference</a></li>
+					<li><a href="http://jmeter.apache.org/api/index.html">Javadocs</a></li>
+				</ul>
 				
 				<aside class="notes">
 				</aside>
@@ -451,15 +1056,32 @@
 			<section>
 				<h2>Resources</h2>
 				<ul>
-					<li>http://jmeter.apache.org/</li>
-					<li>http://jmeter-plugins.org/</li>
-					<li>http://db.apache.org/derby/</li>
-					<li>http://dev.maxmind.com/geoip/legacy/geolite/</li>
-					<li>Presentation Powered by reveal.js: http://lab.hakim.se/reveal-js/</li>
+					<li><a href="http://jmeter.apache.org/">http://jmeter.apache.org/</a></li>
+					<li><a href="http://jmeter-plugins.org/">http://jmeter-plugins.org/</a></li>
+					<li><a href="http://db.apache.org/derby/">http://db.apache.org/derby/</a></li>
+					<li><a href="http://dev.maxmind.com/geoip/legacy/geolite/">http://dev.maxmind.com/geoip/legacy/geolite/</a></li>
+					<li><a href="http://jmeter.apache.org/extending/jmeter_tutorial.pdf">http://jmeter.apache.org/extending/jmeter_tutorial.pdf</a></li>
+					<li><a href="http://en.wikipedia.org/wiki/Software_testing">http://en.wikipedia.org/wiki/Software_testing</a></li>
 				</ul>
 				
 				<aside class="notes">
 				</aside>
+			</section>
+
+			<section>
+				<h2>Load Testing with Apache JMeter</h2>
+				<p><a href="http://mrdowden.github.io/presentations/jmeter-load-testing/">http://mrdowden.github.io/presentations/jmeter-load-testing/</a></p>
+				<br><br>
+				<h2>Contact</h2>
+				<p>
+					<a href="https://twitter.com/mrdowden">@mrdowden</a><br>
+					<a href="https://plus.google.com/+MichaelDowden/posts">+MichaelDowden</a><br>
+					<a href="https://linkedin.com/in/mdowden">linkedin.com/in/mdowden</a>
+				</p>
+				<br>
+				<p class="small">
+					Presentation Powered by reveal.js: <a href="http://lab.hakim.se/reveal-js/">http://lab.hakim.se/reveal-js/</a>
+				</p>
 			</section>
 			
 		</div>

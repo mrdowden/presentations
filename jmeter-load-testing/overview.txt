@@ -1,14 +1,12 @@
 Title
 
+Bio
+
 Topic
 
 Outline
 
-Bio
-
 Content
-  Testing
-  Performance/Load/Stress Testing
   What is JMeter
   Getting Started
     Download & Install
@@ -16,13 +14,10 @@ Content
     HTTP Testing
     JDBC Testing
     Results
-  Advanced
-    Configure timing
-    Combining tests
-    Components / Functions
-    Edit test plan XML
-    Run tests from command line
-    Configure multiple nodes
+
+  Testing
+  Performance/Load/Stress Testing
+
   Answer Questions
     Performance
     Simulate Load
@@ -30,12 +25,24 @@ Content
     Capacity
     Bottlenecks
     Profiling (Zabbix, JMX, etc)
+
+  Advanced
+    Configure timing
+    Combining tests
+    Components / Functions
+    Edit test plan XML
+    Run tests from command line
+    Configure multiple nodes
+
+
   Extend
     Add-ons
     Customization
+
   Other Uses
     Integration
     Perf Mon
+
   Learn More
 
 Conclusion
@@ -65,7 +72,7 @@ http://geekandpoke.typepad.com/geekandpoke/2009/03/stress-test.html#
 http://geekandpoke.typepad.com/.a/6a00d8341d3df553ef01116901f637970c-800wi
 
 //Dilbert Stress Test
-<a href="http://dilbert.comhttp://dilbert.com/strips/comic/2009-12-29/" title="Dilbert.com"><img src="http://dilbert.com" border="0" alt="Dilbert.com" /></a>
+<a href="http://dilbert.com/strips/comic/2009-12-29/" title="Dilbert.com"><img src="http://dilbert.com" border="0" alt="Dilbert.com" /></a>
 
 //Dilbert Performance Test
 <a href="http://dilbert.comhttp://dilbert.com/strips/comic/2010-08-11/" title="Dilbert.com"><img src="http://dilbert.com" border="0" alt="Dilbert.com" /></a>
